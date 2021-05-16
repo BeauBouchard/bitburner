@@ -6,7 +6,10 @@ function localeHHMMSS(ms = 0) {
   return new Date(ms).toLocaleTimeString();
 }
 
-export async function main(ns) {
+/**
+ * @param {Object} ns - ns object being passed in
+ **/
+const main = async (ns) => {
   ns.tprint(`[${localeHHMMSS()}] Starting runHacking.ns`);
 
   let hostname = ns.getHostname();
@@ -28,3 +31,5 @@ export async function main(ns) {
     ns.spawn('spider.ns', 1, 'mainHack.ns');
   }
 }
+
+module.exports = main;
