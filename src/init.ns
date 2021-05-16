@@ -1,4 +1,5 @@
 const baseUrl = 'https://raw.githubusercontent.com/beaubouchard/bitburner/main/src/';
+
 const filesToDownload = [
     'common.ns',
     'mainHack.ns',
@@ -11,9 +12,10 @@ const filesToDownload = [
     'runHacking.ns',
     'find.ns',
 ];
+
 const valuesToRemove = ['BB_SERVER_MAP'];
 
-function localeHHMMSS(ms = 0) {
+const localeHHMMSS = (ms = 0) => {
     if (!ms) {
         ms = new Date().getTime();
     }
@@ -21,7 +23,7 @@ function localeHHMMSS(ms = 0) {
     return new Date(ms).toLocaleTimeString();
 }
 
-export async function main(ns) {
+const main = async (ns) => {
     ns.tprint(`[${localeHHMMSS()}] Starting Initialization Sequence...`);
 
     let hostname = ns.getHostname();
@@ -45,3 +47,5 @@ export async function main(ns) {
     ns.tprint(`[${localeHHMMSS()}] Spawning killAll.ns`);
     ns.spawn('killAll.ns', 1, 'runHacking.ns');
 }
+
+module.exports = main;
